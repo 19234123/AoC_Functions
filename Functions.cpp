@@ -15,9 +15,9 @@ long long getNextSequenceValue(const vector<int>& currentSequence) {
     long long nextValue = 0;
     if (!allValuesZero) {
         nextValue += getNextSequenceValue(nextSequence);
-        nextValue += currentSequence.back();
+        nextValue = currentSequence.front() - nextValue;
     } else {
-        nextValue += nextSequence.back() + currentSequence.back();
+        nextValue += currentSequence.front() - nextSequence.front();
     }
 
     return nextValue;
