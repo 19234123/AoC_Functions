@@ -1,11 +1,27 @@
-#include <iostream>
-#include <fstream>
-#include <map>
-#include <sstream>
-#include <algorithm>
-#include <unordered_set>
 #include "Functions.h"
 
+long long getNextSequenceValue(const vector<int>& currentSequence) {
+    vector<int> nextSequence;
+    for (int i=0; i<currentSequence.size() - 1; i++) {
+        int currentValue = currentSequence[i];
+        int nextValue = currentSequence[i + 1];
+
+        nextSequence.push_back(nextValue - currentValue);
+    }
+
+    bool allValuesZero = std::all_of(nextSequence.begin(), nextSequence.end(),
+                                     [](int value) {return value == 0;});
+
+    long long nextValue = 0;
+    if (!allValuesZero) {
+        nextValue += getNextSequenceValue(nextSequence);
+        nextValue += currentSequence.back();
+    } else {
+        nextValue += nextSequence.back() + currentSequence.back();
+    }
+
+    return nextValue;
+}
 
 vector<string> extractSubstringsBetween(const string& inputString, char startChar, char endChar) {
     size_t startIndex = 0;
@@ -29,15 +45,29 @@ vector<string> extractSubstringsBetween(const string& inputString, char startCha
     return substrings;
 }
 
-vector<int> getIntegersFromString(string& string) {
+vector<int> getPositiveIntegersFromString(const string& inputString) {
     vector<int> integers;
-    for (const auto& character: string) {
-        if (isdigit(character)) {
-            integers.push_back(character);
+
+    string currentInt;
+    for (const auto& currentChar: inputString) {
+        if (currentChar == '-') {
+            cout << "- encountered: Potential negative number. Check input";
         }
+        if (isdigit(currentChar)) {
+            currentInt += currentChar;
+        } else {
+            if (!currentInt.empty()) {
+                integers.push_back(std::stoi(currentInt));
+                currentInt.clear();
+            }
+        }
+    }
+    if (!currentInt.empty()) {
+        integers.push_back(std::stoi(currentInt));
     }
     return integers;
 }
+
 
 long long greatestCommonMultiple(long long a, long long b) {
     while (b != 0) {
