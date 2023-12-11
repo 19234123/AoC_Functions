@@ -91,14 +91,14 @@ long long lcmOfSet(const vector<long long>& numbers) {
     return result;
 }
 
-int pathLength(const string& instructions, Node* currentNode) {
+int pathLength(const string& instructions, NodeStruct* currentNode) {
     bool endReached = false;
 
     int length = 0;
     while (!endReached) {
         for (const auto &direction: instructions) {
             length++;
-            Node *nextNode;
+            NodeStruct *nextNode;
 
             if (direction == 'L') {
                 nextNode = currentNode->left;

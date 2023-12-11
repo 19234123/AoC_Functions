@@ -4,13 +4,13 @@
 #include <vector>
 #include <unordered_set>
 #include <set>
+#include <list>
+#include <map>
 #include <iostream>
 #include <fstream>
-#include <map>
 #include <sstream>
 #include <algorithm>
-#include <unordered_set>
-#include <list>
+
 
 using std::vector;
 using std::list;
@@ -18,10 +18,10 @@ using std::string;
 using std::cout;
 using std::endl;
 
-struct Node {
+struct NodeStruct {
     string name;
-    Node* left;
-    Node* right;
+    NodeStruct* left;
+    NodeStruct* right;
 };
 
 // Generics functions
@@ -41,7 +41,7 @@ vector<string> extractSubstringsBetween(const string& inputString, char startCha
 
 // Used for specific challenges
 long long getNextSequenceValue(const vector<int>& currentSequence);
-int pathLength(const string& instructions, Node* currentNode);
+int pathLength(const string& instructions, NodeStruct* currentNode);
 void setRange(const vector<string>& rangeData, std::map<long long, long long>& map);
 
 #endif //ADVENTOFCODE23_FUNCTIONS_H

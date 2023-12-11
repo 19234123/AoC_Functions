@@ -4,7 +4,7 @@ project(Functions)
 set(CMAKE_CXX_STANDARD 17)
 
 # Set the source files for the library
-set(SOURCE_FILES C:/Dev/Functions/Functions.cpp)
+set(SOURCE_FILES C:/Dev/Libraries/Functions/Functions.cpp)
 
 # Create the library
 add_library(Functions STATIC ${SOURCE_FILES})
