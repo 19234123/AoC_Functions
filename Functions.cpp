@@ -1,5 +1,39 @@
 #include "Functions.h"
 
+int factorial(int n, map<int, int>& factorialMap) {
+    // Base case
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+
+    // Return cached value if found
+    auto it = factorialMap.find(n);
+    if (it != factorialMap.end()) {
+        return it->second;
+    }
+
+    // Recursive calls
+    int result = n * factorial(n-1, factorialMap);
+
+    // Cache result
+    factorialMap[n] = result;
+
+    return result;
+}
+
+int getLargestNumber(const vector<int>& numberList) {
+    auto maxElement = std::max_element(numberList.begin(), numberList.end());
+    return *maxElement;
+}
+
+int getLargestNumber(const vector<string>& numberList) {
+    vector<int> numbers;
+    for (const auto& num: numberList) {
+        numbers.push_back(std::stoi(num));
+    }
+    return getLargestNumber(numbers);
+}
+
 long long getNextSequenceValue(const vector<int>& currentSequence) {
     vector<int> nextSequence;
     for (int i=0; i<currentSequence.size() - 1; i++) {

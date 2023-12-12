@@ -14,6 +14,7 @@
 
 using std::vector;
 using std::list;
+using std::map;
 using std::string;
 using std::cout;
 using std::endl;
@@ -23,6 +24,7 @@ struct NodeStruct {
     NodeStruct* left;
     NodeStruct* right;
 };
+
 
 // Generics functions
 vector<string> readFile(const string& filePath);
@@ -38,6 +40,10 @@ long long lowestCommonMultiple(long long a, long long b);
 long long lcmOfSet(const vector<long long>& numbers);
 vector<int> getPositiveIntegersFromString(const string& inputString);
 vector<string> extractSubstringsBetween(const string& inputString, char startChar, char endChar);
+int getLargestNumber(const vector<int>& numberList);
+int getLargestNumber(const vector<string>& numberList);
+int factorial(int n, map<int, int>* factorialMap);
+
 
 // Used for specific challenges
 long long getNextSequenceValue(const vector<int>& currentSequence);
