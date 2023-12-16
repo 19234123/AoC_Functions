@@ -2,23 +2,21 @@
 
 vector<int> getBitValues(const vector<string> &rawValues) {
     vector<int> bitValues;
-    for (int rowIndex=0; rowIndex<rawValues.size(); rowIndex++) {
-        if (rowIndex != 0) {
-            for (int charIndex=0; charIndex<rawValues[rowIndex].size(); charIndex++) {
-                char value = rawValues[rowIndex][charIndex];
-                if (value == '0') {
-                    bitValues[charIndex]--;
-                } else {
-                    bitValues[charIndex]++;
-                }
-            }
-        } else {
-            for (const auto &value: rawValues[0]) {
-                bitValues.push_back(value-'0');
+    bitValues.reserve(rawValues[0].size());
+    for (int i=0; i<rawValues[0].size(); i++) {
+        bitValues.push_back(0);
+    }
+
+    for (const auto & rawValue : rawValues) {
+        for (int charIndex=0; charIndex<rawValue.size(); charIndex++) {
+            char value = rawValue[charIndex];
+            if (value == '0') {
+                bitValues[charIndex]--;
+            } else {
+                bitValues[charIndex]++;
             }
         }
     }
-
     return bitValues;
 }
 
