@@ -1,6 +1,28 @@
 #include "Functions.h"
 
-int factorial(int n, map<int, int>& factorialMap) {
+vector<int> getBitValues(const vector<string> &rawValues) {
+    vector<int> bitValues;
+    for (int rowIndex=0; rowIndex<rawValues.size(); rowIndex++) {
+        if (rowIndex != 0) {
+            for (int charIndex=0; charIndex<rawValues[rowIndex].size(); charIndex++) {
+                char value = rawValues[rowIndex][charIndex];
+                if (value == '0') {
+                    bitValues[charIndex]--;
+                } else {
+                    bitValues[charIndex]++;
+                }
+            }
+        } else {
+            for (const auto &value: rawValues[0]) {
+                bitValues.push_back(value-'0');
+            }
+        }
+    }
+
+    return bitValues;
+}
+
+long factorial(int n, map<int, int>& factorialMap) {
     // Base case
     if (n == 0 || n == 1) {
         return 1;

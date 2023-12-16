@@ -42,10 +42,11 @@ vector<int> getPositiveIntegersFromString(const string& inputString);
 vector<string> extractSubstringsBetween(const string& inputString, char startChar, char endChar);
 int getLargestNumber(const vector<int>& numberList);
 int getLargestNumber(const vector<string>& numberList);
-int factorial(int n, map<int, int>* factorialMap);
+long factorial(int n, map<int, int>* factorialMap);
 
 
 // Used for specific challenges
+vector<int> getBitValues(const vector<string> &rawValues);
 long long getNextSequenceValue(const vector<int>& currentSequence);
 int pathLength(const string& instructions, NodeStruct* currentNode);
 void setRange(const vector<string>& rangeData, std::map<long long, long long>& map);
